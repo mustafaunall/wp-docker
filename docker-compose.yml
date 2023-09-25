@@ -21,7 +21,7 @@ services:
         image: phpmyadmin:latest
         restart: always
         ports:
-            - "8080:80"
+            - "8998:80"
         env_file: .env
         environment:
             PMA_HOST: db
@@ -36,10 +36,10 @@ services:
             - db
         image: wordpress:latest
         ports:
-            - "8000:80"
+            - "8999:80"
         restart: always
         volumes:
-            - wp_data:/var/www/html
+            - ./wp_data:/var/www/html
             #- ./themes/Divi:/var/www/html/wp-content/themes/Divi
             #- ./plugins/sucuri-scanner:/var/www/html/wp-content/plugins/sucuri-scanner
         env_file: .env
@@ -54,4 +54,3 @@ networks:
     wpNetwork:
 volumes:
     db_data:
-    wp_data:
